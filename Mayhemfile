@@ -1,0 +1,5 @@
+project: rnshah9/mayhem-jaws
+target: finc
+
+cmds:
+  - cmd: /jaws/finCompiler/finc @@
