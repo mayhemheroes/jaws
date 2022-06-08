@@ -7,3 +7,12 @@ ADD . /jaws
 WORKDIR /jaws
 RUN make 
 
+RUN mkdir -p /deps
+RUN ldd /jaws/finCompiler/finc | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
+
+FROM ubuntu:20.04 as package
+
+COPY --from=builder /deps /deps
+COPY --from=builder /jaws/finCompiler/finc /jaws/finCompiler/finc
+ENV LD_LIBRARY_PATH=/deps
+
