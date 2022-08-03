@@ -2,4 +2,4 @@ project: jaws
 target: finc
 
 cmds:
-  - cmd: /jaws/finCompiler/finc @@
+  - cmd: /finc @@
